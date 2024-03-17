@@ -14,7 +14,10 @@ app.post('/send', async (req, res) => {
 
     // Sprawdzenie, czy żadna z wartości nie jest pusta
     if (!formData.email || !formData.name || !formData.phone || !formData.topic || !formData.message) {
+        
+        console.log(`Ivalid request from ${req.ip}`)
         return res.status(400).json({ error: 'Invalid request' });
+        
     }
 
     // Wywołanie funkcji sendMail do wysłania e-maila
