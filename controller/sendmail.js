@@ -8,8 +8,8 @@ const sendMail = async (formData) => {
             port: 587,
             secure: false, // upgrade later with STARTTLS
             auth: {
-              user: process.env.USER,
-              pass: process.env.APP_PASSWORD,
+              user: "igor@variotech.pl",
+              pass: "8AA!vn#b6ddV",
             },
           });
         
