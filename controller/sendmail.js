@@ -3,12 +3,15 @@ import nodemailer from 'nodemailer';
 const sendMail = async (formData) => {
     try {
         const transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host: "smtp.zenbox.pl",
+            port: 587,
+            secure: false, // upgrade later with STARTTLS
             auth: {
-                user: process.env.USER, // Twoja nazwa użytkownika Gmail
-                pass: process.env.APP_PASSWORD // Twoje hasło Gmail
-            }
-        });
+              user: process.env.USER,
+              pass: process.env.APP_PASSWORD,
+            },
+          });
+        
 
         const mailOptions = {
             from: process.env.USER,

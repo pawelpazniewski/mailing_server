@@ -1,8 +1,8 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors'; 
-import https from 'https';
-import fs from 'fs';
+// import https from 'https';
+// import fs from 'fs';
 import sendMail from './controller/sendmail.js';
 
 const app = express();
@@ -34,19 +34,19 @@ app.post('/send', async (req, res) => {
 });
 
 // Wczytanie klucza prywatnego i certyfikatu SSL/TLS
-const privateKey = fs.readFileSync('/etc/letsencrypt/live/vt-mail.pazniewski.com/privkey.pem', 'utf8');
-const certificate = fs.readFileSync('/etc/letsencrypt/live/vt-mail.pazniewski.com/cert.pem', 'utf8');
-const ca = fs.readFileSync('/etc/letsencrypt/live/vt-mail.pazniewski.com/chain.pem', 'utf8');
+// const privateKey = fs.readFileSync('/etc/letsencrypt/live/vt-mail.pazniewski.com/privkey.pem', 'utf8');
+// const certificate = fs.readFileSync('/etc/letsencrypt/live/vt-mail.pazniewski.com/cert.pem', 'utf8');
+// const ca = fs.readFileSync('/etc/letsencrypt/live/vt-mail.pazniewski.com/chain.pem', 'utf8');
 
-const credentials = {
-    key: privateKey,
-    cert: certificate,
-    ca: ca
-};
+// const credentials = {
+//     key: privateKey,
+//     cert: certificate,
+//     ca: ca
+// };
 
-// Stworzenie serwera HTTPS
-const httpsServer = https.createServer(credentials, app);
+// // Stworzenie serwera HTTPS
+// const httpsServer = https.createServer(credentials, app);
 
-httpsServer.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
