@@ -33,7 +33,7 @@ app.post('/send', async (req, res) => {
     }
 });
 
-Wczytanie klucza prywatnego i certyfikatu SSL/TLS
+// Wczytanie klucza prywatnego i certyfikatu SSL/TLS
 const privateKey = fs.readFileSync('/etc/letsencrypt/live/vt-mail.pazniewski.com/privkey.pem', 'utf8');
 const certificate = fs.readFileSync('/etc/letsencrypt/live/vt-mail.pazniewski.com/cert.pem', 'utf8');
 const ca = fs.readFileSync('/etc/letsencrypt/live/vt-mail.pazniewski.com/chain.pem', 'utf8');
@@ -47,6 +47,6 @@ const credentials = {
 // Stworzenie serwera HTTPS
 const httpsServer = https.createServer(credentials, app);
 
-app.listen(PORT, () => {
+httpsServer.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
