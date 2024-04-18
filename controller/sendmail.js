@@ -15,7 +15,7 @@ const sendMail = async (formData) => {
         
 
         const mailOptions = {
-            from: process.env.USER,
+            from: "igor@variotech.pl",
             to: "pavulon3@gmail.com",
             subject: "Nowa wiadomość ze strony Variotech.pl",
             text: `Imię: ${formData.name}\nEmail Nadawcy: ${formData.email}\nNumer telefonu: ${formData.phone}\nTemat: ${formData.topic}\nWiadomość: ${formData.message}`
