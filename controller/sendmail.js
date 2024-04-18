@@ -8,14 +8,14 @@ const sendMail = async (formData) => {
             port: 587,
             secure: false, // upgrade later with STARTTLS
             auth: {
-              user: "igor@variotech.pl",
-              pass: "8AA!vn#b6ddV",
+              user: process.env.USER,
+              pass: process.env.APP_PASSWORD,
             },
           });
         
 
         const mailOptions = {
-            from: "igor@variotech.pl",
+            from: process.env.USER,
             to: "pavulon3@gmail.com",
             subject: "Nowa wiadomość ze strony Variotech.pl",
             text: `Imię: ${formData.name}\nEmail Nadawcy: ${formData.email}\nNumer telefonu: ${formData.phone}\nTemat: ${formData.topic}\nWiadomość: ${formData.message}`
