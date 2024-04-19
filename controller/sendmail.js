@@ -9,7 +9,7 @@ const creds = {
 }
 
 const sendMail = async (formData) => {
-    console.log(creds);
+    
     try {
         const transporter = nodemailer.createTransport({
             host: creds.host,
