@@ -3,14 +3,16 @@ import 'dotenv/config';
 
 const creds = {
     user: process.env.USER_NAME,
-    pass: process.env.APP_PASSWORD
+    pass: process.env.APP_PASSWORD,
+    host: process.env.HOST,
+    targetEmail: process.env.TARGET_EMAIL
 }
 
 const sendMail = async (formData) => {
     console.log(creds);
     try {
         const transporter = nodemailer.createTransport({
-            host: "smtp.zenbox.pl",
+            host: creds.host,
             port: 587,
             secure: false, // upgrade later with STARTTLS
             auth: {
@@ -22,7 +24,7 @@ const sendMail = async (formData) => {
 
         const mailOptions = {
             from: creds.user,
-            to: "pavulon3@gmail.com",
+            to: creds.targetEmail,
             subject: "Nowa wiadomość ze strony Variotech.pl",
             text: `Imię: ${formData.name}\nEmail Nadawcy: ${formData.email}\nNumer telefonu: ${formData.phone}\nTemat: ${formData.topic}\nWiadomość: ${formData.message}`
         };
