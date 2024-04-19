@@ -1,15 +1,21 @@
 import nodemailer from 'nodemailer';
 import 'dotenv/config';
 
+const creds = {
+    user: process.env.USER,
+    pass: process.env.APP_PASSWORD
+}
+
 const sendMail = async (formData) => {
+    console.log(creds);
     try {
         const transporter = nodemailer.createTransport({
             host: "smtp.zenbox.pl",
             port: 587,
             secure: false, // upgrade later with STARTTLS
             auth: {
-              user: process.env.USER,
-              pass: process.env.APP_PASSWORD,
+              user: creds.user,
+              pass: creds.pass,
             },
           });
         
