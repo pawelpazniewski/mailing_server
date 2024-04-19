@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 import 'dotenv/config';
 
 const creds = {
-    user: process.env.USER,
+    user: process.env.USER_NAME,
     pass: process.env.APP_PASSWORD
 }
 
@@ -21,7 +21,7 @@ const sendMail = async (formData) => {
         
 
         const mailOptions = {
-            from: process.env.USER,
+            from: creds.user,
             to: "pavulon3@gmail.com",
             subject: "Nowa wiadomość ze strony Variotech.pl",
             text: `Imię: ${formData.name}\nEmail Nadawcy: ${formData.email}\nNumer telefonu: ${formData.phone}\nTemat: ${formData.topic}\nWiadomość: ${formData.message}`
