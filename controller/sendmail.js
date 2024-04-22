@@ -33,7 +33,7 @@ const sendMail = async (formData) => {
 
         const info = await transporter.sendMail(mailOptions);
         console.log('Email sent:', info.response);
-        const maildata = {
+        const mailData = {
             date: Date.now(),
     email: formData.email,
     phone: formData.phone,
