@@ -6,6 +6,7 @@ const creds = {
     pass: process.env.APP_PASSWORD,
     host: process.env.HOST,
     targetEmail: process.env.TARGET_EMAIL
+    
 }
 
 const sendMail = async (formData) => {
