@@ -19,12 +19,15 @@ export async function connectToMariaDB(data) {
         INSERT INTO sent_forms (date, email, phone, subject, message)
         VALUES (?,?,?,?,?)
     `
+    const date = new Date();
+    const timestamp = date.getTime();
+
     async function insertData() {
         let conn;
         try {
             conn = await pool.getConnection();
             await conn.query(query, [
-                dbdata.date,
+                timestamp,
                 dbdata.email,
                 dbdata.phone,
                 dbdata.subject,
