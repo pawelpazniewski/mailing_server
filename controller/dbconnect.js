@@ -22,12 +22,15 @@ export async function connectToMariaDB(data) {
     const date = new Date();
     const timestamp = date.getTime();
 
+    const dateTime = new Date(timestamp);
+    const formattedDate = dateTime.toLocaleString();    
+
     async function insertData() {
         let conn;
         try {
             conn = await pool.getConnection();
             await conn.query(query, [
-                timestamp,
+                formattedDate,
                 dbdata.email,
                 dbdata.phone,
                 dbdata.subject,
