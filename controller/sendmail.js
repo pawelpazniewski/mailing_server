@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import 'dotenv/config';
+import { connectToMariaDB } from './dbconnect';
 
 const creds = {
     user: process.env.USER_NAME,
@@ -32,6 +33,15 @@ const sendMail = async (formData) => {
 
         const info = await transporter.sendMail(mailOptions);
         console.log('Email sent:', info.response);
+        const maildata = {
+            date: Date.now(),
+    email: formData.email,
+    phone: formData.phone,
+    subject: formData.topic,
+    message: formData.message
+        }
+
+        await connectToMariaDB(mailData);
         return true;
     } catch (error) {
         console.error('Error sending email:', error);
