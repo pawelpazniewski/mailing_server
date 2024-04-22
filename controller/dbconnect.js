@@ -6,11 +6,11 @@ export async function connectToMariaDB() {
     try {
         // Tworzenie poola połączeń
         const pool = createPool({
-            host: process.env.DB_HOST,
-            port: process.env.DB_PORT,
-            user: process.env.DB_USER,
-            password: process.env.DB_PASSWORD,
-            database: process.env.DB_NAME,
+            host: 'variotech.cnye0w4waw7k.eu-central-1.rds.amazonaws.com',
+            port: 3306,
+            user: 'admin_vt',
+            password: '4MJwsjQcP0DWnVXADgEL',
+            database: 'sent_forms',
             connectionLimit: 5
         });
 
