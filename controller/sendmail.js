@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 import 'dotenv/config';
-import { connectToMariaDB } from './dbconnect';
+import { connectToMariaDB } from './dbconnect.js';
 
 const creds = {
     user: process.env.USER_NAME,
