@@ -6,7 +6,9 @@ const creds = {
     user: process.env.USER_NAME,
     pass: process.env.APP_PASSWORD,
     host: process.env.HOST,
-    targetEmail: process.env.TARGET_EMAIL
+    targetEmail: process.env.TARGET_EMAIL,
+    mailPort: process.env.MAIL_PORT ,
+    
     
 }
 
@@ -16,7 +18,7 @@ const sendMail = async (formData) => {
         const transporter = nodemailer.createTransport({
             host: creds.host,
             port: 587,
-            secure: false, // upgrade later with STARTTLS
+            secure: false, 
             auth: {
               user: creds.user,
               pass: creds.pass,
@@ -27,7 +29,7 @@ const sendMail = async (formData) => {
         const mailOptions = {
             from: creds.user,
             to: creds.targetEmail,
-            subject: "Nowa wiadomość ze strony Variotech.pl",
+            subject: process.env.EMAIL_SUBJECT,
             text: `Imię: ${formData.name}\nEmail Nadawcy: ${formData.email}\nNumer telefonu: ${formData.phone}\nTemat: ${formData.topic}\nWiadomość: ${formData.message}`
         };
 

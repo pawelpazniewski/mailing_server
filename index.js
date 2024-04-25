@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
-app.use(cors({ origin: ['https://dev.variotech.pl','https://variotech.pl'] }));
+app.use(cors({ origin: [process.env.CORS_SOURCE_DEV,process.env.CORS_SOURCE_PROD] }));
 
 app.post('/send', async (req, res) => {
     const formData = req.body;
